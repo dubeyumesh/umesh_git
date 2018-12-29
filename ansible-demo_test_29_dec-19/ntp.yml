@@ -1,0 +1,18 @@
+---
+- hosts: dbgroup
+  user: root
+  become: true
+
+  tasks:
+    - name: Configure DNS Client
+      template: src=/etc/resolv.conf dest=/etc/resolv.conf
+      tags: dns
+
+    - name: Install ntp
+      yum: name=ntp state=present
+      tags: ntp
+
+    - name: Copy ntp file
+      template: src=/etc/ntp.conf dest=/etc/ntp.conf
+      tags: ntp
+      notify: restart ntp service

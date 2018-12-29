@@ -1,0 +1,7 @@
+---
+- hosts: dbgroup
+  tasks: 
+    - name: Create File
+      file:
+          path: /tmp/yallo
+          state: touch

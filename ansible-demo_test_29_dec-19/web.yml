@@ -1,0 +1,10 @@
+---
+ - hosts: appgroup
+   user: root
+   become: true
+
+
+   tasks:
+     - name: Install Web Server
+       yum: pkg=httpd state=installed
+
